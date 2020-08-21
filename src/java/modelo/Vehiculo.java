@@ -67,6 +67,17 @@ public class Vehiculo implements Serializable {
     public Vehiculo() {
     }
 
+    public Vehiculo(Integer idvehiculo, String año, String numeropasajeros, String modelo, String marca, String cilindraje, String paisfabricacion, String concesionario) {
+        this.idvehiculo = idvehiculo;
+        this.año = año;
+        this.numeropasajeros = numeropasajeros;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.cilindraje = cilindraje;
+        this.paisfabricacion = paisfabricacion;
+        this.concesionario = concesionario;
+    }
+
     public Vehiculo(Integer idvehiculo) {
         this.idvehiculo = idvehiculo;
     }

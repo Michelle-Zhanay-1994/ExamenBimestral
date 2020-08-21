@@ -96,6 +96,24 @@ public class MantenimientosFacadeREST extends AbstractFacade<Mantenimientos> {
         super.create(ob);
         return ("Se creo exitosamente");
     }
+     @POST
+    @Path("Editar")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON})
+    public String editar(@FormParam("idmantenimientos") int idmantenimientos,@FormParam("vehiculo") String vehiculo,@FormParam("cliente")String cliente, @FormParam("fecha")String fecha,@FormParam("descripcion")String descripcion,@FormParam("kilometrajevehiculo") String kilometrajevehiculo){
+        Mantenimientos ob = new Mantenimientos (idmantenimientos);
+        ob.setCliente(cliente);
+        ob.setDescripcion(descripcion);
+        ob.setFecha(fecha);
+        ob.setKilometrajevehiculo(kilometrajevehiculo);
+        ob.setVehiculo(vehiculo);
+        
+         if(ob== null){
+            return "no se encuentra el id";
+        }else{
+             super.edit(ob);
+            return "Se edito correctamente";
+        }
+    }
             
     @Override
     protected EntityManager getEntityManager() {

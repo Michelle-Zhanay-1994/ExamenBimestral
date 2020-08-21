@@ -59,6 +59,15 @@ public class Mantenimientos implements Serializable {
     public Mantenimientos() {
     }
 
+    public Mantenimientos(Integer idmantenimientos, String vehiculo, String cliente, String fecha, String descripcion, String kilometrajevehiculo) {
+        this.idmantenimientos = idmantenimientos;
+        this.vehiculo = vehiculo;
+        this.cliente = cliente;
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.kilometrajevehiculo = kilometrajevehiculo;
+    }
+
     public Mantenimientos(Integer idmantenimientos) {
         this.idmantenimientos = idmantenimientos;
     }

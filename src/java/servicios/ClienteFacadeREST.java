@@ -110,11 +110,11 @@ public class ClienteFacadeREST extends AbstractFacade<Cliente> {
         ob.setNombre(nombre);
         ob.setProvinciaprocedencia(provinciaprocedencia);
         ob.setVehiculocompra(vehiculocompra);
-         if(idcliente== null){
-            super.create(ob);
-            return "el objeto se inserto con exito";
+         if(ob== null){
+            return "no se encuentra el id";
         }else{
-            return "la cedula debe tener 10 caracteres";
+             super.edit(ob);
+            return "Se edito correctamente";
         }
         
         
