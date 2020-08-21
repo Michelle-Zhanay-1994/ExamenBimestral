@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -82,7 +83,22 @@ public class VehiculoFacadeREST extends AbstractFacade<Vehiculo> {
     public String countREST() {
         return String.valueOf(super.count());
     }
-
+    
+    @POST
+    @Path("Crear")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON})
+    public String crear(@FormParam("idvehiculo") int idvehiculo,@FormParam("a\u00f1o")String a\u00f1o,@FormParam("numeropasajeros") String numeropasajeros, @FormParam("modelo")String modelo,@FormParam("maraca")String marca,@FormParam("cilindraje")String cilindraje,@FormParam("paisfabricacion")String paisfabricacion,@FormParam("concesionario")String concesionario){
+        Vehiculo ob = new Vehiculo (idvehiculo);
+        ob.setAño(año);
+        ob.setCilindraje(cilindraje);
+        ob.setConcesionario(concesionario);
+        ob.setMarca(marca);
+        ob.setModelo(modelo);
+        ob.setNumeropasajeros(numeropasajeros);
+        ob.setPaisfabricacion(paisfabricacion);
+        super.create(ob);
+        return ("Se creo exitosamente");
+    }
     @Override
     protected EntityManager getEntityManager() {
         return em;

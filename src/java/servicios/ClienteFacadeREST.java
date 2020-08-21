@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -82,6 +83,43 @@ public class ClienteFacadeREST extends AbstractFacade<Cliente> {
     public String countREST() {
         return String.valueOf(super.count());
     }
+    @POST
+    @Path("Crear")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON})
+    public String crear(@FormParam("idcliente") int idcliente, @FormParam("nombre") String nombre, @FormParam("apellido")String apellido,@FormParam("cedula")String cedula,@FormParam("direccion") String direccion, @FormParam("edad") String edad,@FormParam("provinciaprocedencia") String provinciaprocedencia,@FormParam("vehiculocompra")String vehiculocompra){
+        Cliente ob = new Cliente(idcliente);
+        ob.setApellido(apellido);
+        ob.setCedula(cedula);
+        ob.setDireccion(direccion);
+        ob.setEdad(edad);
+        ob.setNombre(nombre);
+        ob.setProvinciaprocedencia(provinciaprocedencia);
+        ob.setVehiculocompra(vehiculocompra);
+        super.create(ob);
+        return ("Se creo el Cliente exitosamente");
+    }
+     @POST
+    @Path("Editar")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON})
+    public String editar(@FormParam("idcliente") int idcliente, @FormParam("nombre") String nombre, @FormParam("apellido")String apellido,@FormParam("cedula")String cedula,@FormParam("direccion") String direccion, @FormParam("edad") String edad,@FormParam("provinciaprocedencia") String provinciaprocedencia,@FormParam("vehiculocompra")String vehiculocompra){
+        Cliente ob = super.find(idcliente);
+        ob.setApellido(apellido);
+        ob.setCedula(cedula);
+        ob.setDireccion(direccion);
+        ob.setEdad(edad);
+        ob.setNombre(nombre);
+        ob.setProvinciaprocedencia(provinciaprocedencia);
+        ob.setVehiculocompra(vehiculocompra);
+         if(idcliente== null){
+            super.create(ob);
+            return "el objeto se inserto con exito";
+        }else{
+            return "la cedula debe tener 10 caracteres";
+        }
+        
+        
+    }
+
 
     @Override
     protected EntityManager getEntityManager() {
